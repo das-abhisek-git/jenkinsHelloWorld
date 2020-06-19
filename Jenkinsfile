@@ -1,16 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      agent any
+    stage('BuildStage') {
       steps {
-        build 'DeliveryBuild'
+        echo 'Build Stage Completed'
       }
     }
 
-    stage('test') {
+    stage('TestStage') {
       steps {
-        git 'https://github.com/das-abhisek-git/jenkinsHelloWorld.git'
+        echo 'Test Stage Completed'
+      }
+    }
+
+    stage('Deploy Stage') {
+      steps {
+        mail(subject: 'Blue Ocean Deploy Completed', body: 'Blue Ocean Deploy Completed Successfully', from: 'das.abhisek@gmail.com', to: 'abhisek.das2@cognizant.com')
       }
     }
 
